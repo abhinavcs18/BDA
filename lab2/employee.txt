@@ -35,10 +35,10 @@ cqlsh:employee> select * from employeeinfo;
 
  emp_id | dept_name       | designation        | doj                             | emp_name | salary
 --------+-----------------+--------------------+---------------------------------+----------+------------
-      8 |  Data analytics | Software developer | 2003-05-04 18:30:00.000000+0000 |  Akshita | 1.2312e+05
-      2 |       Corporate |       Data analyst | 2010-05-14 18:30:00.000000+0000 | Akanksha |    23456.9
-      4 |              IT |          Corporate | 2003-06-04 18:30:00.000000+0000 |    Anmol |        242
-      3 | Web development |            Manager | 2012-09-04 18:30:00.000000+0000 |  Abhinay |      33333
+      8 |  Data analytics | Software developer | 2003-05-04 18:30:00.000000+0000 |  Abhinav | 1.2312e+05
+      2 |       Corporate |       Data analyst | 2010-05-14 18:30:00.000000+0000 |  Atharv  |    23456.9
+      4 |              IT |          Corporate | 2003-06-04 18:30:00.000000+0000 |   Anmol  |        242
+      3 | Web development |            Manager | 2012-09-04 18:30:00.000000+0000 |  Abhay |      33333
 
 (4 rows)
 cqlsh:employee> begin batch insert into employeeinfo(emp_id, emp_name, designation, doj, salary, dept_name) values (121, 'Akash', 'HR', '2012-09-05', 111111, 'Corporate'); apply batch;
@@ -46,11 +46,11 @@ cqlsh:employee> select * from employeeinfo;
 
  emp_id | dept_name       | designation        | doj                             | emp_name | salary
 --------+-----------------+--------------------+---------------------------------+----------+------------
-      8 |  Data analytics | Software developer | 2003-05-04 18:30:00.000000+0000 |  Akshita | 1.2312e+05
-      2 |       Corporate |       Data analyst | 2010-05-14 18:30:00.000000+0000 | Akanksha |    23456.9
-      4 |              IT |          Corporate | 2003-06-04 18:30:00.000000+0000 |    Anmol |        242
-    121 |       Corporate |                 HR | 2012-09-04 18:30:00.000000+0000 |    Akash | 1.1111e+05
-      3 | Web development |            Manager | 2012-09-04 18:30:00.000000+0000 |  Abhinay |      33333
+      8 |  Data analytics | Software developer | 2003-05-04 18:30:00.000000+0000 |  Abhinav | 1.2312e+05
+      2 |       Corporate |       Data analyst | 2010-05-14 18:30:00.000000+0000 |  Atharv  |    23456.9
+      4 |              IT |          Corporate | 2003-06-04 18:30:00.000000+0000 |   Anmol  |        242
+    121 |       Corporate |                 HR | 2012-09-04 18:30:00.000000+0000 |   Akash  | 1.1111e+05
+      3 | Web development |            Manager | 2012-09-04 18:30:00.000000+0000 |  Abhay   |      33333
 
 (5 rows)
 cqlsh:employee> update employeeinfo set emp_name = 'Jinny', dept_name = 'Management' where emp_id = 121;
@@ -58,11 +58,11 @@ cqlsh:employee> select * from employeeinfo;
 
  emp_id | dept_name       | designation        | doj                             | emp_name | salary
 --------+-----------------+--------------------+---------------------------------+----------+------------
-      8 |  Data analytics | Software developer | 2003-05-04 18:30:00.000000+0000 |  Akshita | 1.2312e+05
-      2 |       Corporate |       Data analyst | 2010-05-14 18:30:00.000000+0000 | Akanksha |    23456.9
-      4 |              IT |          Corporate | 2003-06-04 18:30:00.000000+0000 |    Anmol |        242
-    121 |      Management |                 HR | 2012-09-04 18:30:00.000000+0000 |    Jinny | 1.1111e+05
-      3 | Web development |            Manager | 2012-09-04 18:30:00.000000+0000 |  Abhinay |      33333
+      8 |  Data analytics | Software developer | 2003-05-04 18:30:00.000000+0000 |  Abhinav | 1.2312e+05
+      2 |       Corporate |       Data analyst | 2010-05-14 18:30:00.000000+0000 |  Atharv  |    23456.9
+      4 |              IT |          Corporate | 2003-06-04 18:30:00.000000+0000 |  Anmol   |        242
+    121 |      Management |                 HR | 2012-09-04 18:30:00.000000+0000 |  Akash   | 1.1111e+05
+      3 | Web development |            Manager | 2012-09-04 18:30:00.000000+0000 |  Abhay   |      33333
 
 (5 rows)
 cqlsh:employee> create index on employeeinfo(salary);
@@ -73,11 +73,11 @@ cqlsh:employee> select * from employeeinfo;
 
  emp_id | dept_name       | designation        | doj                             | emp_name | projects          | salary
 --------+-----------------+--------------------+---------------------------------+----------+-------------------+------------
-      8 |  Data analytics | Software developer | 2003-05-04 18:30:00.000000+0000 |  Akshita | {'Start', 'Test'} | 1.2312e+05
-      2 |       Corporate |       Data analyst | 2010-05-14 18:30:00.000000+0000 | Akanksha | {'Start', 'Test'} |    23456.9
-      4 |              IT |          Corporate | 2003-06-04 18:30:00.000000+0000 |    Anmol | {'Start', 'Test'} |        242
-    121 |      Management |                 HR | 2012-09-04 18:30:00.000000+0000 |    Jinny | {'Start', 'Test'} | 1.1111e+05
-      3 | Web development |            Manager | 2012-09-04 18:30:00.000000+0000 |  Abhinay | {'Start', 'Test'} |      33333
+      8 |  Data analytics | Software developer | 2003-05-04 18:30:00.000000+0000 |  Abhinav | {'Start', 'Test'} | 1.2312e+05
+      2 |       Corporate |       Data analyst | 2010-05-14 18:30:00.000000+0000 |  Atharv  | {'Start', 'Test'} |    23456.9
+      4 |              IT |          Corporate | 2003-06-04 18:30:00.000000+0000 |   Anmol  | {'Start', 'Test'} |        242
+    121 |      Management |                 HR | 2012-09-04 18:30:00.000000+0000 |   Akash  | {'Start', 'Test'} | 1.1111e+05
+      3 | Web development |            Manager | 2012-09-04 18:30:00.000000+0000 |  Abhay   | {'Start', 'Test'} |      33333
 
 (5 rows)
 cqlsh:employee> begin batch insert into employeeinfo(emp_id, emp_name, designation, doj, salary, dept_name) values (121, 'Boris', 'MTO', '2001-08-05', 12212, 'Corporate') using ttl 120; apply batch;
